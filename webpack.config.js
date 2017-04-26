@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './index.js',
@@ -24,5 +25,8 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.optimize.UglifyJsPlugin()]
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new CopyWebpackPlugin([{ from: 'index.html', to: 'index.html' }])
+  ]
 };

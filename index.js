@@ -1,16 +1,7 @@
-require('./styles.css');
-const imgSrc = require('./image.jpg');
-const greeting = 'Hello, Webpack!';
-(() => {
-  console.log(greeting);
-  const d = document.createElement('div');
-  d.classList.add('myDiv');
-  d.innerText = greeting;
-  document.body.appendChild(d);
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './greet.css';
 
-  // Create the image
-  const image = document.createElement('img');
-  image.src = imgSrc;
-  image.height = 400;
-  document.body.appendChild(image);
-})();
+const Greeting = ({ name }) => <p className="greet">Hello, {name}!</p>;
+
+ReactDOM.render(<Greeting name="Reign" />, document.getElementById('root'));

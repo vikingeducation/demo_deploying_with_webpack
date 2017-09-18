@@ -1,6 +1,7 @@
-require('./styles.css');
-const imgSrc = require('./image.jpg');
+require('./style.css');
 const greeting = 'Hello, Webpack!';
+const imgSrc = require('./image.jpg');
+
 (() => {
   console.log(greeting);
   const d = document.createElement('div');
@@ -8,7 +9,6 @@ const greeting = 'Hello, Webpack!';
   d.innerText = greeting;
   document.body.appendChild(d);
 
-  // Create the image
   const image = document.createElement('img');
   image.src = imgSrc;
   image.height = 400;

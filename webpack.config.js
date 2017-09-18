@@ -1,5 +1,5 @@
 var path = require('path');
-var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './index.js',
@@ -8,13 +8,15 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['env']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
         }
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
@@ -24,5 +26,14 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.optimize.UglifyJsPlugin()]
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 4000
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Webpack!'
+    })
+  ]
 };
